@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\PortfolioController;
+use App\Http\Controllers\PostController;
 use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Route;
 
@@ -15,9 +17,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 // send view
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [PortfolioController::class, "index"]);
 
 // send string
 Route::get('/string', function () {
@@ -42,6 +42,13 @@ Route::get('/function', function () {
 });
 
 // from controllers
-Route::get("/products1", [ProductController::class, 'index']);
+Route::get("/products1", [ProductController::class, 'index'])->name("products");
 Route::get("/products2", [ProductController::class, 'index2']);
 Route::get("/products3", [ProductController::class, 'index3']);
+
+// route parameter
+Route::get("/products/{id}", [ProductController::class, "show"])->where("id", "[0-9]+");
+
+Route::get("/products", [ProductController::class, 'index'])->name("products");
+
+Route::get("/blog", [PostController::class, "index"]);

@@ -9,5 +9,9 @@
 <body>
     <h1>{{ $data ?? "NotFound Data Title" }}</h1>
     <p>{{ $description ?? "NotFound Data Description" }}</p>
+
+    <span>{{ $id ?? "Route Parameter notFound" }}</span>
+
+    <h4>Link : <a href="{{ route("products") }}">Click in Here</a></h4>
 </body>
 </html>

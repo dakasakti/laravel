@@ -28,4 +28,11 @@ class ProductController extends Controller
             "description" => $description,
         ]);
     }
+
+    // to route parameter
+    public function show($id) {
+        return view("index", [
+            "id" => $id,
+        ]);
+    }
 }
