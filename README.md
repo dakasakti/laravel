@@ -3,8 +3,8 @@ this is a repository when you want to learn laravel from beginner to advanced
 
 ### Requirements
 - PHP >= 8.0 [Link](https://www.php.net)
-- Composer https://getcomposer.org
-- Visual Studio Code https://code.visualstudio.com
+- Composer [Link](https://getcomposer.org)
+- Visual Studio Code [Link](https://code.visualstudio.com)
 
 ### Installation
 - Composer
@@ -272,12 +272,135 @@ php artisan db:seed
 ```
 
 ### Query Builder
+```
+use Illuminate\Support\Facades\DB;
+
+// get all post
+$posts = DB::table('posts')->get();
+
+// get by id
+$posts = DB::table('posts')->where("id", "=", 8)->get();
+$posts = DB::table('posts')->where(["id" => 8])->get();
+
+// insert
+$posts = DB::table('posts')->insert([
+    "title" => "Ini Post Terbaru",
+    "slug" => "ini-post-terbaru",
+    "body" => "ini deskripsi yang akan ditampilkan",
+    "user_id" => 3,
+]);
+
+// update
+$posts = DB::table('posts')->where(["id" => 11])->update([
+    "body" => "mencoba update"
+]);
+
+// delete
+$posts = DB::table('posts')->where(["id" => 11])->delete();
+$posts = DB::table('posts')->delete(11);
+```
 ### Introduction to Eloquent
+```
+use App\Models\Blog;
+
+// get all
+$blogs = Blog::all();
+
+// get by id
+$blog = Blog::find($id)->first();
+
+// insert version_1
+$blog = new Blog;
+$blog->title = $request->input("title");
+$blog->slug = $request->input("slug");
+$blog->body = $request->input("body");
+$blog->user_id = 1;
+$blog->save();
+
+// insert version_2
+Blog::create([
+    "title" => $request->input("title"),
+    "slug" => $request->input("slug"),
+    "body" => $request->input("body"),
+    "user_id" => 1,
+]);
+
+// update
+public function update(UpdateBlogRequest $request, Blog $blog)
+{
+    $blog->update([
+        "title" => $request->input("title"),
+        "slug" => $request->input("slug"),
+        "body" => $request->input("body"),
+        "user_id" => 1,
+    ]);
+
+    return redirect(route("blog.index"));
+}
+
+// delete
+public function destroy(Blog $blog)
+{
+    $blog->delete();
+    return redirect(route("blog.index"));
+}
+```
 ### Eloquent Serialization
-### Eloquent One to Many
-### Eloquent HasMany & HasOne
-### Eloquent Many to Many
+- toArray
+```
+$blogs = Blog::all()->toArray();
+```
+
+- toJSON
+```
+$blogs = Blog::all()->toJson();
+```
+### Eloquent Relationship
+- Eloquent One to Many
+- Eloquent HasMany & HasOne
+- Eloquent Many to Many
 ### Accessing to Request
+[Link](https://laravel.com/docs/9.x/validation#error-message-indexes-and-positions)
+```
+public function rules()
+{
+    return [
+        "title" => "required",
+        "slug" => "required",
+        "body" => "required"
+    ];
+}
+
+<!-- /resources/views/blogs/create.blade.php -->
+ 
+<h1>Create Post</h1>
+ 
+@if ($errors->any())
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
+ 
+// errors directive
+<!-- Create Post Form -->
+
+<!-- /resources/views/blogs/create.blade.php -->
+ 
+<label for="title">Post Title</label>
+ 
+<input id="title"
+    type="text"
+    name="title"
+    class="@error('title') is-invalid @enderror">
+ 
+@error('title')
+    <div class="alert alert-danger">{{ $message }}</div>
+@enderror
+```
 ### Validation
 ### From Request
 ### Image Upload

@@ -9,8 +9,8 @@ class PostController extends Controller
 {
     public function index()
     {
-        $posts = DB::select("SELECT * FROM posts");
-
+        // query builder
+        $posts = DB::table('posts')->get();
         return view("posts.index", compact('posts'));
     }
 }

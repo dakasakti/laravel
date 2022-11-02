@@ -1,8 +1,12 @@
 <?php
 
+use App\Http\Controllers\AuthenticationController;
+use App\Http\Controllers\BlogController;
 use App\Http\Controllers\PortfolioController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\ProfileController;
+use App\Models\Blog;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,7 +21,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 // send view
-Route::get('/', [PortfolioController::class, "index"]);
+Route::get('/view', [PortfolioController::class, "index"]);
 
 // send string
 Route::get('/string', function () {
@@ -51,4 +55,15 @@ Route::get("/products/{id}", [ProductController::class, "show"])->where("id", "[
 
 Route::get("/products", [ProductController::class, 'index'])->name("products");
 
-Route::get("/blog", [PostController::class, "index"]);
+Route::get("/posts", [PostController::class, "index"]);
+
+Route::get("/", function () {
+    return view("pages.index");
+});
+
+Route::resource('/blog', BlogController::class);
+
+Route::get("/profile", [ProfileController::class, "index"])->name("profile");
+
+Route::get("/auth/register", [AuthenticationController::class, "register"])->name("register");
+Route::get("/auth/login", [AuthenticationController::class, "login"])->name("login");
