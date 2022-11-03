@@ -359,8 +359,9 @@ $blogs = Blog::all()->toJson();
 - Eloquent One to Many
 - Eloquent HasMany & HasOne
 - Eloquent Many to Many
-### Accessing to Request
+### Accessing to Request (Validation)
 [Link](https://laravel.com/docs/9.x/validation#error-message-indexes-and-positions)
+    
 ```
 public function rules()
 {
@@ -372,9 +373,9 @@ public function rules()
 }
 
 <!-- /resources/views/blogs/create.blade.php -->
- 
+    
 <h1>Create Post</h1>
- 
+    
 @if ($errors->any())
     <div class="alert alert-danger">
         <ul>
@@ -384,25 +385,63 @@ public function rules()
         </ul>
     </div>
 @endif
- 
+    
 // errors directive
 <!-- Create Post Form -->
 
 <!-- /resources/views/blogs/create.blade.php -->
- 
+    
 <label for="title">Post Title</label>
- 
+    
 <input id="title"
     type="text"
     name="title"
     class="@error('title') is-invalid @enderror">
- 
+    
 @error('title')
     <div class="alert alert-danger">{{ $message }}</div>
 @enderror
 ```
-### Validation
-### From Request
+
 ### Image Upload
+[Link](https://laravel.com/docs/9.x/filesystem#introduction)
+```
+in form => enctype="multipart/form-data"
+```
+```
+Method we can use on $request
+// guessExtension() => get extension file
+// getMimeType() => get type file
+// getSize() => get size file
+// getError() => get error file
+// isValid() => get valid file
+
+// guessClientExtension() => get extension file from client
+// getClientOriginalName() => get original name file from client
+// getClientMimeType() => get type file from client
+
+// move()
+// store()
+// storeAs()
+// storePublicly()
+```
 ### Basic Artisan Commands
+```
+php artisan --version
+php artisan help
+php artisan list
+php artisan down
+php artisan up
+php artisan optimize
+php artisan cache:clear
+php artisan auth:clear-resets
+php artisan key:generate
+php artisan session:table
+php artisan view:Clear
+```
 ### Authentication & Authorization
+[Link](https://laravel.com/docs/9.x/authentication)
+
+```
+php artisan ui tailwindcss --auth
+```

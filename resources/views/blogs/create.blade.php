@@ -13,7 +13,7 @@
                 </div>
             </div>
             <div class="flex-auto px-4 lg:px-10 py-10 pt-0">
-                <form action="{{ route("blog.store") }}" method="POST">
+                <form action="{{ route("blog.store") }}" method="POST" enctype="multipart/form-data">
                 @csrf
                   <div class="flex flex-wrap">
                     <div class="w-full lg:w-6/12 px-4 mt-3">
@@ -22,7 +22,7 @@
                           class="block uppercase text-blueGray-600 text-xs font-bold mb-2"
                           htmlFor="grid-password"
                         >
-                          Title
+                          Title <span class="text-red-500">*</span>
                         </label>
                         <input
                           type="text"
@@ -51,13 +51,33 @@
                     </div>
                   </div>
                   <div class="flex flex-wrap">
+                    <div class="w-full px-4 mt-3">
+                        <div class="relative w-full mb-3">
+                          <label
+                            class="@error('image') is-invalid @enderror block uppercase text-blueGray-600 text-xs font-bold mb-2"
+                            htmlFor="grid-password"
+                          >
+                            Image <span class="text-red-500">*</span>
+                          </label>
+                          <input
+                            type="file"
+                            class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
+                            name="image"
+                            />
+                            @error('image')
+                            <div class=" text-red-500 mt-1">{{ $message }}</div>
+                            @enderror
+                        </div>
+                      </div>
+                  </div>
+                  <div class="flex flex-wrap">
                     <div class="w-full lg:w-12/12 px-4">
                       <div class="relative w-full mb-3">
                         <label
                           class="block uppercase text-blueGray-600 text-xs font-bold mb-2"
                           htmlFor="grid-password"
                         >
-                          Body
+                          Body <span class="text-red-500">*</span>
                         </label>
                         <textarea
                           type="text"

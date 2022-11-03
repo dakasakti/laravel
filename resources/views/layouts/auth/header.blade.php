@@ -1,5 +1,5 @@
 <nav
-      class="top-0 fixed z-50 w-full flex flex-wrap items-center justify-between px-2 py-3 navbar-expand-lg bg-white shadow"
+      class="top-0 absolute z-50 w-full flex flex-wrap items-center justify-between px-2 py-3 navbar-expand-lg"
     >
       <div
         class="container px-4 mx-auto flex flex-wrap items-center justify-between"
@@ -8,7 +8,7 @@
           class="w-full relative flex justify-between lg:w-auto lg:static lg:block lg:justify-start"
         >
           <a
-            class="text-blueGray-700 text-sm font-bold leading-relaxed inline-block mr-4 py-2 whitespace-nowrap uppercase"
+            class="text-sm font-bold leading-relaxed inline-block mr-4 py-2 whitespace-nowrap uppercase text-white"
             href="/"
             >Dakasakti</a
           ><button
@@ -16,7 +16,7 @@
             type="button"
             onclick="toggleNavbar('example-collapse-navbar')"
           >
-            <i class="fas fa-bars"></i>
+            <i class="text-white fas fa-bars"></i>
           </button>
         </div>
         <div
@@ -26,10 +26,10 @@
           <ul class="flex flex-col lg:flex-row list-none mr-auto">
             <li class="flex items-center">
               <a
-                class="hover:text-blueGray-500 text-blueGray-700 px-3 py-4 lg:py-2 flex items-center text-xs uppercase font-bold"
-                href="https://www.creative-tim.com/learning-lab/tailwind/js/overview/notus?ref=njs-index"
+                class="lg:text-white lg:hover:text-blueGray-200 text-blueGray-700 px-3 py-4 lg:py-2 flex items-center text-xs uppercase font-bold"
+                href="https://www.creative-tim.com/learning-lab/tailwind/js/overview/notus"
                 ><i
-                  class="text-blueGray-400 far fa-file-alt text-lg leading-lg mr-2"
+                  class="lg:text-blueGray-200 text-blueGray-400 far fa-file-alt text-lg leading-lg mr-2"
                 ></i>
                 Docs</a
               >
@@ -40,14 +40,14 @@
           >
             <li class="inline-block relative">
               <a
-                class="hover:text-blueGray-500 text-blueGray-700 px-3 py-4 lg:py-2 flex items-center text-xs uppercase font-bold"
+                class="lg:text-white lg:hover:text-blueGray-200 text-blueGray-700 px-3 py-4 lg:py-2 flex items-center text-xs uppercase font-bold"
                 href="#pablo"
                 onclick="openDropdown(event,'demo-pages-dropdown')"
               >
                 Demo Pages
               </a>
               <div
-                class="hidden bg-white text-base z-50 float-left py-2 list-none text-left rounded shadow-lg min-w-48 navbar-popper"
+                class="hidden bg-white text-base z-50 float-left py-2 list-none text-left rounded shadow-lg min-w-48"
                 id="demo-pages-dropdown"
               >
                 <span
@@ -62,19 +62,19 @@
                   Blog
                 </a>
                 <a
-                  href="./pages/admin/settings.html"
+                  href="../admin/settings.html"
                   class="text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-blueGray-700"
                 >
                   Settings
                 </a>
                 <a
-                  href="./pages/admin/tables.html"
+                  href="../admin/tables.html"
                   class="text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-blueGray-700"
                 >
                   Tables
                 </a>
                 <a
-                  href="./pages/admin/maps.html"
+                  href="../admin/maps.html"
                   class="text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-blueGray-700"
                 >
                   Maps
@@ -88,7 +88,7 @@
                   Auth Layout
                 </span>
                 <a
-                  href="{{ route("login.index") }}"
+                  href="{{ route('login.index') }}"
                   class="text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-blueGray-700"
                 >
                   Login
@@ -114,7 +114,7 @@
                   Landing
                 </a>
                 <a
-                  href="{{ route("profile") }}"
+                  href="{{ route('profile') }}"
                   class="text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-blueGray-700"
                 >
                   Profile
@@ -123,39 +123,39 @@
             </li>
             <li class="flex items-center">
               <a
-                class="hover:text-blueGray-500 text-blueGray-700 px-3 py-4 lg:py-2 flex items-center text-xs uppercase font-bold"
+                class="lg:text-white lg:hover:text-blueGray-200 text-blueGray-700 px-3 py-4 lg:py-2 flex items-center text-xs uppercase font-bold"
                 href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdemos.creative-tim.com%2Fnotus-js%2F"
                 target="_blank"
                 ><i
-                  class="text-blueGray-400 fab fa-facebook text-lg leading-lg"
+                  class="lg:text-blueGray-200 text-blueGray-400 fab fa-facebook text-lg leading-lg"
                 ></i
                 ><span class="lg:hidden inline-block ml-2">Share</span></a
               >
             </li>
             <li class="flex items-center">
               <a
-                class="hover:text-blueGray-500 text-blueGray-700 px-3 py-4 lg:py-2 flex items-center text-xs uppercase font-bold"
+                class="lg:text-white lg:hover:text-blueGray-200 text-blueGray-700 px-3 py-4 lg:py-2 flex items-center text-xs uppercase font-bold"
                 href="https://twitter.com/intent/tweet?url=https%3A%2F%2Fdemos.creative-tim.com%2Fnotus-js%2F&text=Start%20your%20development%20with%20a%20Free%20Tailwind%20CSS%20and%20JavaScript%20UI%20Kit%20and%20Admin.%20Let%20Notus%20JS%20amaze%20you%20with%20its%20cool%20features%20and%20build%20tools%20and%20get%20your%20project%20to%20a%20whole%20new%20level."
                 target="_blank"
                 ><i
-                  class="text-blueGray-400 fab fa-twitter text-lg leading-lg"
+                  class="lg:text-blueGray-200 text-blueGray-400 fab fa-twitter text-lg leading-lg"
                 ></i
                 ><span class="lg:hidden inline-block ml-2">Tweet</span></a
               >
             </li>
             <li class="flex items-center">
               <a
-                class="hover:text-blueGray-500 text-blueGray-700 px-3 py-4 lg:py-2 flex items-center text-xs uppercase font-bold"
-                href="https://github.com/creativetimofficial/notus-js?ref=njs-index"
+                class="lg:text-white lg:hover:text-blueGray-200 text-blueGray-700 px-3 py-4 lg:py-2 flex items-center text-xs uppercase font-bold"
+                href="https://github.com/creativetimofficial/notus-js"
                 target="_blank"
                 ><i
-                  class="text-blueGray-400 fab fa-github text-lg leading-lg"
+                  class="lg:text-blueGray-200 text-blueGray-400 fab fa-github text-lg leading-lg"
                 ></i
                 ><span class="lg:hidden inline-block ml-2">Star</span></a
               >
             </li>
             <li class="flex items-center">
-                <a href="{{ route('login.index') }}" class="text-white bg-pink-500 active:bg-pink-600 text-xs font-bold uppercase px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none lg:mr-1 lg:mb-0 ml-3 mb-3 ease-linear transition-all duration-150">Login</a>
+              <a href="{{ route('login.index') }}" class="bg-white text-blueGray-700 active:bg-blueGray-50 text-xs font-bold uppercase px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none lg:mr-1 lg:mb-0 ml-3 mb-3 ease-linear transition-all duration-150">Login</a>
             </li>
           </ul>
         </div>

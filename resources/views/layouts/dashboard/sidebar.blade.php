@@ -199,7 +199,7 @@
             >
               <li class="items-center">
                 <a
-                  href="{{ route('login') }}"
+                  href="{{ route('login.index') }}"
                   class="text-blueGray-700 hover:text-blueGray-500 text-xs uppercase py-3 font-bold block"
                 >
                   <i
@@ -211,7 +211,7 @@
 
               <li class="items-center">
                 <a
-                  href="{{ route("register") }}"
+                  href="{{ route("register.index") }}"
                   class="text-blueGray-700 hover:text-blueGray-500 text-xs uppercase py-3 font-bold block"
                 >
                   <i
@@ -249,7 +249,7 @@
 
               <li class="items-center">
                 <a
-                  href="../profile.html"
+                  href="{{ route("profile") }}"
                   class="text-blueGray-700 hover:text-blueGray-500 text-xs uppercase py-3 font-bold block"
                 >
                   <i

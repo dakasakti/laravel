@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AuthenticationController;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\PortfolioController;
@@ -52,18 +53,19 @@ Route::get("/products3", [ProductController::class, 'index3']);
 
 // route parameter
 Route::get("/products/{id}", [ProductController::class, "show"])->where("id", "[0-9]+");
-
-Route::get("/products", [ProductController::class, 'index'])->name("products");
-
 Route::get("/posts", [PostController::class, "index"]);
 
 Route::get("/", function () {
     return view("pages.index");
 });
 
-Route::resource('/blog', BlogController::class);
+Route::resource('admin', AdminController::class);
+Route::resource('admin/blog', BlogController::class);
 
 Route::get("/profile", [ProfileController::class, "index"])->name("profile");
 
-Route::get("/auth/register", [AuthenticationController::class, "register"])->name("register");
-Route::get("/auth/login", [AuthenticationController::class, "login"])->name("login");
+Route::get("/auth/register", [AuthenticationController::class, "index"])->name("register.index");
+Route::post("/auth/register", [AuthenticationController::class, "store"])->name("register.store");
+Route::get("/auth/login", [AuthenticationController::class, "login"])->name("login.index");
+Route::post("/auth/login", [AuthenticationController::class, "authenticate"])->name("login.auth");
+Route::post("/auth/logout", [AuthenticationController::class, "logout"])->name("logout");

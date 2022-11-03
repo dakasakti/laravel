@@ -18,6 +18,7 @@ return new class extends Migration
             $table->foreignId("user_id");
             $table->string("title");
             $table->string("slug")->unique();
+            $table->string("image_path");
             $table->text("body");
             $table->timestamps();
             $table->timestamp("published_at")->nullable();

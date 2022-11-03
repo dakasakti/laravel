@@ -6,7 +6,7 @@
           >
             <a
               class="text-white text-sm uppercase hidden lg:inline-block font-semibold"
-              href="./index.html"
+              href="/"
               >Dashboard</a
             >
             <form
@@ -65,8 +65,12 @@
                 <a
                   href="#pablo"
                   class="text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-blueGray-700"
-                  >Seprated link</a
+                  >Logout</a
                 >
+                <form action="{{ route("logout") }}" method="POST">
+                    @csrf
+                    <button class="text-sm py-2 font-normal block w-full whitespace-nowrap bg-transparent text-blueGray-700">Logout</button>
+                </form>
               </div>
             </ul>
           </div>

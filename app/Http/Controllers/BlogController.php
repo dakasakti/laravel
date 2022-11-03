@@ -5,9 +5,15 @@ namespace App\Http\Controllers;
 use App\Models\Blog;
 use App\Http\Requests\StoreBlogRequest;
 use App\Http\Requests\UpdateBlogRequest;
+use Illuminate\Support\Facades\File;
 
 class BlogController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware("auth", ['except' => ["show"]]);
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -44,9 +50,13 @@ class BlogController extends Controller
         // $blog->user_id = 1;
         // $blog->save();
 
+        $imagePath = time() . "." . $request->image->extension();
+        $request->image->move(public_path("storage/images"), $imagePath);
+
         Blog::create([
             "title" => $request->input("title"),
             "body" => $request->input("body"),
+            "image_path" => $imagePath,
             "user_id" => 1,
         ]);
 
@@ -85,11 +95,22 @@ class BlogController extends Controller
      */
     public function update(UpdateBlogRequest $request, Blog $blog)
     {
+        // old
+        $imagePath = $blog->image_path;
+
+        // new
+        if ($request->has('image')) {
+            File::delete(public_path("storage/images/" . $imagePath));
+
+            $imagePath = time() . "." . $request->image->extension();
+            $request->image->move(public_path("storage/images"), $imagePath);
+        }
+
         $blog->slug = null;
         $blog->update([
             "title" => $request->input("title"),
             "body" => $request->input("body"),
-            "user_id" => 1,
+            "image_path" => $imagePath,
         ]);
 
         return redirect(route("blog.index"));
@@ -103,6 +124,7 @@ class BlogController extends Controller
      */
     public function destroy(Blog $blog)
     {
+        File::delete(public_path("storage/images/" . $blog->image_path));
         $blog->delete();
         return redirect(route("blog.index"));
     }

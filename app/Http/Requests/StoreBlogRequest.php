@@ -24,8 +24,9 @@ class StoreBlogRequest extends FormRequest
     public function rules()
     {
         return [
-            "title" => "required",
-            "body" => "required|min:20|max:1000"
+            "title" => "required|regex:/^[a-zA-Z0-9\s]+$/",
+            "body" => "required|min:20|max:1000",
+            "image" => "required|mimes:png,jpg|max:2048"
         ];
     }
 }

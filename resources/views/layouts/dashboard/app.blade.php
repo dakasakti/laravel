@@ -34,7 +34,7 @@
       href="/storage/vendor/@fortawesome/fontawesome-free/css/all.min.css"
     />
     <link rel="stylesheet" href="/storage/styles/tailwind.css" />
-    <title>Tables | Notus Tailwind JS by Creative Tim</title>
+    <title>Dashboard | Dakasakti</title>
   </head>
   <body class="text-blueGray-700 antialiased">
     <noscript>You need to enable JavaScript to run this app.</noscript>
