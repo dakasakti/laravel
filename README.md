@@ -31,6 +31,8 @@ this is a repository when you want to learn laravel from beginner to advanced
 - [JavaScript (ES6) code snippets](https://marketplace.visualstudio.com/items?itemName=xabikos.JavaScriptSnippets) => charalampos karypidis
 
 ### HTTP Response in Routing
+[Link](https://laravel.com/docs/9.x/routing)
+
 - Send view
     ```
     Route::get('/', function () {

@@ -29,7 +29,7 @@ class AuthenticationController extends Controller
             "password" => Hash::make($request->input("password")),
         ]);
 
-        return redirect(route("login.index"));
+        return to_route('login.index');
     }
 
     public function login()
@@ -44,7 +44,7 @@ class AuthenticationController extends Controller
         if (Auth::attempt($credentials, $request->input('checkbox') === "on" ? true : false)) {
             $request->session()->regenerate();
 
-            return redirect()->intended('admin');
+            return redirect()->intended();
         }
 
         return back()->withErrors([

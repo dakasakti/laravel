@@ -143,8 +143,8 @@
             <ul class="md:flex-col md:min-w-full flex flex-col list-none">
               <li class="items-center">
                 <a
-                  href="{{ route("blog.index") }}"
-                  class="text-xs uppercase py-3 font-bold block text-blueGray-700 hover:text-blueGray-500"
+                  href="{{ route("index") }}"
+                     class="text-xs uppercase py-3 font-bold block text-pink-500 hover:text-pink-600"
                 >
                   <i class="fas fa-tv mr-2 text-sm text-blueGray-300"></i>
                   Dashboard
@@ -153,33 +153,11 @@
 
               <li class="items-center">
                 <a
-                  href="./settings.html"
-                  class="text-xs uppercase py-3 font-bold block text-pink-500 hover:text-pink-600"
-                >
-                  <i class="fas fa-tools mr-2 text-sm opacity-75"></i>
-                  Settings
-                </a>
-              </li>
-
-              <li class="items-center">
-                <a
-                  href="./tables.html"
+                  href="{{ route("blog.index") }}"
                   class="text-xs uppercase py-3 font-bold block text-blueGray-700 hover:text-blueGray-500"
                 >
-                  <i class="fas fa-table mr-2 text-sm text-blueGray-300"></i>
-                  Tables
-                </a>
-              </li>
-
-              <li class="items-center">
-                <a
-                  href="./maps.html"
-                  class="text-xs uppercase py-3 font-bold block text-blueGray-700 hover:text-blueGray-500"
-                >
-                  <i
-                    class="fas fa-map-marked mr-2 text-sm text-blueGray-300"
-                  ></i>
-                  Maps
+                  <i class="fas fa-tv mr-2 text-sm text-blueGray-300"></i>
+                  Blog
                 </a>
               </li>
             </ul>
@@ -237,7 +215,7 @@
             >
               <li class="items-center">
                 <a
-                  href="/"
+                  href="{{ route('landing') }}"
                   class="text-blueGray-700 hover:text-blueGray-500 text-xs uppercase py-3 font-bold block"
                 >
                   <i

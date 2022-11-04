@@ -11,6 +11,6 @@ class PostController extends Controller
     {
         // query builder
         $posts = DB::table('posts')->get();
-        return view("posts.index", compact('posts'));
+        return view("posts.index", compact('posts'))->with("title", "Posts");
     }
 }

@@ -8,6 +8,11 @@ class ProfileController extends Controller
 {
     public function index()
     {
-        return view("pages.profile");
+        return view("pages.profile")->with("title", "Profile");
+    }
+
+    public function show()
+    {
+        return view("pages.landing")->with("title", "Landing");
     }
 }

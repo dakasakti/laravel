@@ -1,10 +1,11 @@
-@extends('layouts.app')
+@extends('layouts.main.app')
 
 @section('content')
-    <h1>This is main page</h1>
+    <main class="text-center">
+        <h1>This is main page</h1>
 
     @if (5 < 10)
-        <img src="{{ asset("storage/banner.jpg") }}" alt="image">
+        <img src="{{ asset("storage/banner.jpg") }}" alt="image" class="mx-auto">
     @endif
 
     @unless (empty($name))
@@ -46,6 +47,7 @@
             <li>There are no names!</li>
        @endforelse
     </ul>
+    </main>
 @endsection
 
 @push('scripts')

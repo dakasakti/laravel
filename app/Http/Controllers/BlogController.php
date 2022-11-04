@@ -60,7 +60,7 @@ class BlogController extends Controller
             "user_id" => 1,
         ]);
 
-        return redirect(route("blog.index"));
+        return to_route('blog.index');
     }
 
     /**
@@ -113,7 +113,7 @@ class BlogController extends Controller
             "image_path" => $imagePath,
         ]);
 
-        return redirect(route("blog.index"));
+        return to_route('blog.index');
     }
 
     /**
@@ -126,6 +126,6 @@ class BlogController extends Controller
     {
         File::delete(public_path("storage/images/" . $blog->image_path));
         $blog->delete();
-        return redirect(route("blog.index"));
+        return to_route('blog.index');
     }
 }

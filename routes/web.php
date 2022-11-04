@@ -7,8 +7,9 @@ use App\Http\Controllers\PortfolioController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
-use App\Models\Blog;
+use App\Http\Controllers\SocialAccountController;
 use Illuminate\Support\Facades\Route;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -56,16 +57,28 @@ Route::get("/products/{id}", [ProductController::class, "show"])->where("id", "[
 Route::get("/posts", [PostController::class, "index"]);
 
 Route::get("/", function () {
-    return view("pages.index");
+    return view("pages.index")->with("title", "Index");
 });
 
-Route::resource('admin', AdminController::class);
-Route::resource('admin/blog', BlogController::class);
+Route::prefix('admin')->group(function () {
+    Route::resource('/', AdminController::class);
+    Route::resource('/blog', BlogController::class);
+});
+
 
 Route::get("/profile", [ProfileController::class, "index"])->name("profile");
+Route::get("/landing", [ProfileController::class, "show"])->name("landing");
 
-Route::get("/auth/register", [AuthenticationController::class, "index"])->name("register.index");
-Route::post("/auth/register", [AuthenticationController::class, "store"])->name("register.store");
-Route::get("/auth/login", [AuthenticationController::class, "login"])->name("login.index");
-Route::post("/auth/login", [AuthenticationController::class, "authenticate"])->name("login.auth");
-Route::post("/auth/logout", [AuthenticationController::class, "logout"])->name("logout");
+Route::prefix('auth')->controller(AuthenticationController::class)->group(function () {
+    Route::get("/register", "index")->name("register.index");
+    Route::post("/register", "store")->name("register.store");
+    Route::get("/login", "login")->name("login.index");
+    Route::post("/login", "authenticate")->name("login.auth");
+    Route::post("/logout", "logout")->name("logout");
+});
+
+// auth by github
+Route::prefix('auth')->controller(SocialAccountController::class)->group(function () {
+    Route::get("{name}/", "index");
+    Route::get("{name}/callback", "callback");
+});

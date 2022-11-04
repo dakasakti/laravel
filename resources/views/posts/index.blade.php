@@ -1,7 +1,7 @@
-@extends('layouts.app')
+@extends('layouts.main.app')
 
 @section('content')
-<div class="px-4 py-5 flex-auto ct-docs-frame">
+<div class="px-4 py-5 flex-auto ct-docs-frame mt-5">
     <div class="relative flex flex-wrap justify-center ">
         <div class="w-full">
             <div class="py-12">

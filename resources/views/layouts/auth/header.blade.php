@@ -61,24 +61,6 @@
                 >
                   Blog
                 </a>
-                <a
-                  href="../admin/settings.html"
-                  class="text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-blueGray-700"
-                >
-                  Settings
-                </a>
-                <a
-                  href="../admin/tables.html"
-                  class="text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-blueGray-700"
-                >
-                  Tables
-                </a>
-                <a
-                  href="../admin/maps.html"
-                  class="text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-blueGray-700"
-                >
-                  Maps
-                </a>
                 <div
                   class="h-0 mx-4 my-2 border border-solid border-blueGray-100"
                 ></div>
@@ -108,7 +90,7 @@
                   No Layout
                 </span>
                 <a
-                  href="/"
+                  href="{{ route('landing') }}"
                   class="text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-blueGray-700"
                 >
                   Landing
@@ -124,7 +106,7 @@
             <li class="flex items-center">
               <a
                 class="lg:text-white lg:hover:text-blueGray-200 text-blueGray-700 px-3 py-4 lg:py-2 flex items-center text-xs uppercase font-bold"
-                href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdemos.creative-tim.com%2Fnotus-js%2F"
+                href="https://www.facebook.com/dakasakti.id"
                 target="_blank"
                 ><i
                   class="lg:text-blueGray-200 text-blueGray-400 fab fa-facebook text-lg leading-lg"
@@ -146,7 +128,7 @@
             <li class="flex items-center">
               <a
                 class="lg:text-white lg:hover:text-blueGray-200 text-blueGray-700 px-3 py-4 lg:py-2 flex items-center text-xs uppercase font-bold"
-                href="https://github.com/creativetimofficial/notus-js"
+                href="https://github.com/dakasakti"
                 target="_blank"
                 ><i
                   class="lg:text-blueGray-200 text-blueGray-400 fab fa-github text-lg leading-lg"
@@ -155,7 +137,11 @@
               >
             </li>
             <li class="flex items-center">
-              <a href="{{ route('login.index') }}" class="bg-white text-blueGray-700 active:bg-blueGray-50 text-xs font-bold uppercase px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none lg:mr-1 lg:mb-0 ml-3 mb-3 ease-linear transition-all duration-150">Login</a>
+                @if (request()->routeIs('login.index'))
+                <a href="{{ route('register.index') }}" class="bg-white text-blueGray-700 active:bg-blueGray-50 text-xs font-bold uppercase px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none lg:mr-1 lg:mb-0 ml-3 mb-3 ease-linear transition-all duration-150">Register</a>
+                @else
+                <a href="{{ route('login.index') }}" class="bg-white text-blueGray-700 active:bg-blueGray-50 text-xs font-bold uppercase px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none lg:mr-1 lg:mb-0 ml-3 mb-3 ease-linear transition-all duration-150">Login</a>
+                @endif
             </li>
           </ul>
         </div>

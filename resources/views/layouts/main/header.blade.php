@@ -27,7 +27,7 @@
             <li class="flex items-center">
               <a
                 class="hover:text-blueGray-500 text-blueGray-700 px-3 py-4 lg:py-2 flex items-center text-xs uppercase font-bold"
-                href="https://www.creative-tim.com/learning-lab/tailwind/js/overview/notus?ref=njs-index"
+                href="https://www.creative-tim.com/learning-lab/tailwind/js/overview/notus"
                 ><i
                   class="text-blueGray-400 far fa-file-alt text-lg leading-lg mr-2"
                 ></i>
@@ -41,7 +41,7 @@
             <li class="inline-block relative">
               <a
                 class="hover:text-blueGray-500 text-blueGray-700 px-3 py-4 lg:py-2 flex items-center text-xs uppercase font-bold"
-                href="#pablo"
+                href="#click"
                 onclick="openDropdown(event,'demo-pages-dropdown')"
               >
                 Demo Pages
@@ -60,24 +60,6 @@
                   class="text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-blueGray-700"
                 >
                   Blog
-                </a>
-                <a
-                  href="./pages/admin/settings.html"
-                  class="text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-blueGray-700"
-                >
-                  Settings
-                </a>
-                <a
-                  href="./pages/admin/tables.html"
-                  class="text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-blueGray-700"
-                >
-                  Tables
-                </a>
-                <a
-                  href="./pages/admin/maps.html"
-                  class="text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-blueGray-700"
-                >
-                  Maps
                 </a>
                 <div
                   class="h-0 mx-4 my-2 border border-solid border-blueGray-100"
@@ -108,7 +90,7 @@
                   No Layout
                 </span>
                 <a
-                  href="/"
+                  href="{{ route('landing') }}"
                   class="text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-blueGray-700"
                 >
                   Landing
@@ -124,7 +106,7 @@
             <li class="flex items-center">
               <a
                 class="hover:text-blueGray-500 text-blueGray-700 px-3 py-4 lg:py-2 flex items-center text-xs uppercase font-bold"
-                href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdemos.creative-tim.com%2Fnotus-js%2F"
+                href="https://www.facebook.com/dakasakti.id"
                 target="_blank"
                 ><i
                   class="text-blueGray-400 fab fa-facebook text-lg leading-lg"
@@ -146,7 +128,7 @@
             <li class="flex items-center">
               <a
                 class="hover:text-blueGray-500 text-blueGray-700 px-3 py-4 lg:py-2 flex items-center text-xs uppercase font-bold"
-                href="https://github.com/creativetimofficial/notus-js?ref=njs-index"
+                href="https://github.com/dakasakti"
                 target="_blank"
                 ><i
                   class="text-blueGray-400 fab fa-github text-lg leading-lg"
@@ -155,7 +137,11 @@
               >
             </li>
             <li class="flex items-center">
+                @auth
+                <a href="{{ route('index') }}" class="text-white bg-pink-500 active:bg-pink-600 text-xs font-bold uppercase px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none lg:mr-1 lg:mb-0 ml-3 mb-3 ease-linear transition-all duration-150">Dashboard</a>
+                @else
                 <a href="{{ route('login.index') }}" class="text-white bg-pink-500 active:bg-pink-600 text-xs font-bold uppercase px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none lg:mr-1 lg:mb-0 ml-3 mb-3 ease-linear transition-all duration-150">Login</a>
+                @endauth
             </li>
           </ul>
         </div>

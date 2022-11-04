@@ -1,22 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="/storage/styles/tailwind.css" />
-    {{-- @vite('resources/css/app.css') --}}
-    <title>Main</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#000000" />
+    <link rel="shortcut icon" href="{{ asset("/storage/img/favicon.ico") }}" />
+    <link
+        rel="apple-touch-icon"
+        sizes="76x76"
+        href="{{ asset("/storage/img/apple-icon.png") }}"
+    />
+    <link
+        rel="stylesheet"
+        href="{{ asset("/storage/vendor/@fortawesome/fontawesome-free/css/all.min.css") }}"
+    />
+    <link rel="stylesheet" href="{{ asset("/storage/styles/tailwind.css") }}" />
+    <title>{{ $title }} | Dakasakti</title>
 </head>
 <body>
     <header>
-        @include('layouts.header')
+        @include('layouts.main.header')
     </header>
-    <main class="w-11/12 m-auto">
-        @yield("content")
-    </main>
+    @yield("content")
     <footer>
-        @include('layouts.footer')
+        @include('layouts.main.footer')
     </footer>
 
 </body>
