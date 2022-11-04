@@ -25,6 +25,7 @@
                           Title <span class="text-red-500">*</span>
                         </label>
                         <input
+                          id="title"
                           type="text"
                           class="@error('title') is-invalid @enderror border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
                           name="title"
@@ -44,6 +45,7 @@
                           Slug
                         </label>
                         <input
+                          id="slug"
                           type="text"
                           class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
                           value="{{ old("slug") }}" disabled/>
@@ -98,3 +100,15 @@
     </div>
 </div>
 @endsection
+
+@push('scripts')
+<script src="https://code.jquery.com/jquery-3.6.1.slim.min.js" integrity="sha256-w8CvhFs7iHNVUtnSP0YKEg00p9Ih13rlL9zGqvLdePA=" crossorigin="anonymous"></script>
+<script>
+    $("#title").keyup(function() {
+        var Text = $(this).val();
+        Text = Text.toLowerCase();
+        Text = Text.replace(/[^a-zA-Z0-9]+/g,'-');
+        $("#slug").val(Text);
+    });
+</script>
+@endpush

@@ -54,6 +54,7 @@
         </div>
       </div>
     </div>
+    @stack('scripts')
     <script src="https://unpkg.com/@popperjs/core@2/dist/umd/popper.js"></script>
     <script type="text/javascript">
       /* Make dynamic date appear */

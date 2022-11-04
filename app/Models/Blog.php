@@ -13,6 +13,11 @@ class Blog extends Model
 
     protected $guarded = ["id", "slug"];
 
+    public function getRouteKeyName()
+    {
+        return 'slug';
+    }
+
     public function sluggable(): array
     {
         return [
@@ -21,4 +26,10 @@ class Blog extends Model
             ]
         ];
     }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
 }

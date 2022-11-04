@@ -13,7 +13,7 @@
                 </div>
             </div>
             <div class="flex-auto px-4 lg:px-10 py-10 pt-0">
-                <form action="{{ route("blog.update", $blog->id) }}" method="POST" enctype="multipart/form-data">
+                <form action="{{ route("blog.update", $blog->slug) }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 @method("PUT")
                   <div class="flex flex-wrap">

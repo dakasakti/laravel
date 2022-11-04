@@ -27,9 +27,23 @@ this is a repository when you want to learn laravel from beginner to advanced
 - [Laravel goto view](https://marketplace.visualstudio.com/items?itemName=codingyu.laravel-goto-view) => codingyu
 - [Laravel Snippets](https://marketplace.visualstudio.com/items?itemName=onecentlin.laravel5-snippets) => Winnie Lin
 - [Getter and Setter Generator](https://marketplace.visualstudio.com/items?itemName=afmicc.GetterAndSetterGenerator) => Agustin Martinez Ibarra
+- [PHP Intelephense](https://marketplace.visualstudio.com/items?itemName=bmewburn.vscode-intelephense-client) => Ben Mewburn
 - [PHP IntelliSense](https://marketplace.visualstudio.com/items?itemName=zobo.php-intellisense) => Damjan Cvetko
 - [JavaScript (ES6) code snippets](https://marketplace.visualstudio.com/items?itemName=xabikos.JavaScriptSnippets) => charalampos karypidis
+- [Database Client](https://marketplace.visualstudio.com/items?itemName=cweijan.vscode-database-client2) => Weijan Chen
+- [Community Material Theme](https://marketplace.visualstudio.com/items?itemName=Equinusocio.vsc-community-material-theme) => Equinusocio
 
+### Laravel Debugbar
+```
+composer require barryvdh/laravel-debugbar --dev
+
+// add in config->app.php => providers
+Barryvdh\Debugbar\ServiceProvider::class,
+
+// use
+Debugbar::info("message is info");
+Debugbar::error("message is error");
+```
 ### HTTP Response in Routing
 [Link](https://laravel.com/docs/9.x/routing)
 

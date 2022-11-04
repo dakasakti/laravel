@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use App\Models\Blog;
 use App\Http\Requests\StoreBlogRequest;
 use App\Http\Requests\UpdateBlogRequest;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Gate;
 
 class BlogController extends Controller
 {
@@ -21,7 +23,7 @@ class BlogController extends Controller
      */
     public function index()
     {
-        $blogs = Blog::all();
+        $blogs = Blog::latest()->with('user')->where(["user_id" => Auth::id()])->get();
         return view("blogs.index", compact("blogs"));
     }
 
@@ -57,7 +59,7 @@ class BlogController extends Controller
             "title" => $request->input("title"),
             "body" => $request->input("body"),
             "image_path" => $imagePath,
-            "user_id" => 1,
+            "user_id" => Auth::id(),
         ]);
 
         return to_route('blog.index');
@@ -83,6 +85,10 @@ class BlogController extends Controller
      */
     public function edit(Blog $blog)
     {
+        if (! Gate::allows('update-blog', $blog)) {
+            abort(403);
+        }
+
         return view("blogs.edit", compact("blog"));
     }
 

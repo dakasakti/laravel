@@ -52,10 +52,10 @@
                     Pending
                 </td>
                 <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                    {{ $blog->user_id }}
+                    {{ $blog->user->name }}
                 </td>
                 <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                    <a href="{{ route("blog.edit", $blog->id) }}">
+                    <a href="{{ route("blog.edit", $blog->slug) }}">
                         Edit
                     </a>
                     <form action="{{ route("blog.destroy", $blog->id) }}" method="POST">
