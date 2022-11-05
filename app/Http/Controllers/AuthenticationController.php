@@ -8,6 +8,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Auth\Events\Registered;
 
 class AuthenticationController extends Controller
 {
@@ -23,13 +24,14 @@ class AuthenticationController extends Controller
 
     public function store(StoreRegisterRequest $request)
     {
-        User::create([
+        $user = User::create([
             "name" => $request->input("name"),
             "email" => $request->input("email"),
             "password" => Hash::make($request->input("password")),
         ]);
 
-        return to_route('login.index');
+        event(new Registered($user));
+        return to_route('login.index')->with("message", "Successfully registered, please check your email for verification");
     }
 
     public function login()

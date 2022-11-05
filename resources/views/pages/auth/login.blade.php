@@ -40,11 +40,14 @@
               <div class="text-blueGray-400 text-center mb-3 font-bold">
                 <small>Or sign in with credentials</small>
               </div>
+              @if (Session()->has('message'))
+              <h1 class="text-emerald-500  text-center">{{ session('message') }}</h1>
+              @endif
               <form action="{{ route("login.auth") }}" method="POST">
                 @csrf
                 @error('info')
                     <div class=" text-red-500 mt-1 text-center text-sm font-bold">{{ $message }}</div>
-                    @enderror
+                @enderror
                 <div class="relative w-full mb-3">
 
                   <label

@@ -4,6 +4,7 @@ this is a repository when you want to learn laravel from beginner to advanced
 ### Requirements
 - PHP >= 8.0 [Link](https://www.php.net)
 - Composer [Link](https://getcomposer.org)
+- NodeJS [Link](https://nodejs.org/en/)
 - Visual Studio Code [Link](https://code.visualstudio.com)
 
 ### Installation

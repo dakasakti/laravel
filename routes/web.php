@@ -3,6 +3,7 @@
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AuthenticationController;
 use App\Http\Controllers\BlogController;
+use App\Http\Controllers\EmailController;
 use App\Http\Controllers\PortfolioController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\ProductController;
@@ -10,7 +11,6 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SocialAccountController;
 use Barryvdh\Debugbar\Facades\Debugbar;
 use Illuminate\Support\Facades\Route;
-
 
 /*
 |--------------------------------------------------------------------------
@@ -84,5 +84,14 @@ Route::prefix('auth')->group(function () {
     Route::controller(SocialAccountController::class)->group(function () {
         Route::get("{name}/", "index");
         Route::get("{name}/callback", "callback");
+    });
+});
+
+// verification email
+Route::prefix('email')->group(function () {
+    Route::controller(EmailController::class)->group(function () {
+        Route::get("verify", "index")->name('verification.notice');
+        Route::get('verify/{id}/{hash}', "verify")->name('verification.verify');
+        Route::post('verification-notification', "resend")->name('verification.send');
     });
 });
