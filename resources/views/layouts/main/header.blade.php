@@ -137,11 +137,11 @@
               >
             </li>
             <li class="flex items-center">
-                @auth
-                <a href="{{ route('index') }}" class="text-white bg-pink-500 active:bg-pink-600 text-xs font-bold uppercase px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none lg:mr-1 lg:mb-0 ml-3 mb-3 ease-linear transition-all duration-150">Dashboard</a>
-                @else
+                @guest
                 <a href="{{ route('login.index') }}" class="text-white bg-pink-500 active:bg-pink-600 text-xs font-bold uppercase px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none lg:mr-1 lg:mb-0 ml-3 mb-3 ease-linear transition-all duration-150">Login</a>
-                @endauth
+                @else
+                <a href="{{ route('index') }}" class="text-white bg-pink-500 active:bg-pink-600 text-xs font-bold uppercase px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none lg:mr-1 lg:mb-0 ml-3 mb-3 ease-linear transition-all duration-150">Dashboard</a>
+                @endguest
             </li>
           </ul>
         </div>

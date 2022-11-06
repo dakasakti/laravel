@@ -62,9 +62,15 @@
                 <div
                   class="h-0 my-2 border border-solid border-blueGray-100"
                 ></div>
-                <form action="{{ route("logout") }}" method="POST">
+                <a
+                  href="#click"
+                  class="text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-blueGray-700"
+                  onclick="event.preventDefault();
+                        document.getElementById('logout-form').submit();"
+                  >Logout</a
+                >
+                <form id="logout-form" action="{{ route("logout") }}" method="POST">
                     @csrf
-                    <button class="text-sm py-2 font-normal block w-full whitespace-nowrap bg-transparent text-blueGray-700">Logout</button>
                 </form>
               </div>
             </ul>
