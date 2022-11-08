@@ -67,7 +67,6 @@ Route::prefix('admin')->group(function () {
     Route::resource('blog', BlogController::class);
 });
 
-
 Route::get("profile", [ProfileController::class, "index"])->name("profile");
 Route::get("landing", [ProfileController::class, "show"])->name("landing");
 

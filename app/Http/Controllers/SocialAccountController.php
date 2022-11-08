@@ -14,12 +14,12 @@ class SocialAccountController extends Controller
 {
     public function index($provider)
     {
-        return Socialite::driver($provider)->redirect();
+        return Socialite::driver($provider)->stateless()->redirect();
     }
 
     public function callback($provider)
     {
-        $data = Socialite::driver($provider)->user();
+        $data = Socialite::driver($provider)->stateless()->user();
         $credential = $this->findOrCreateUser($data, $provider);
 
         Auth::login($credential, true);
