@@ -4,6 +4,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AuthenticationController;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\EmailController;
+use App\Http\Controllers\FallbackController;
 use App\Http\Controllers\PortfolioController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\ProductController;
@@ -94,3 +95,6 @@ Route::prefix('email')->group(function () {
         Route::post('verification-notification', "resend")->name('verification.send');
     });
 });
+
+// fallback view
+Route::fallback(FallbackController::class);

@@ -85,6 +85,11 @@ Debugbar::error("message is error");
     });
     ```
 
+- Send Fallback
+    ```
+    Route::fallback(FallbackController::class);
+    ```
+
 ### Controllers
 How to make
 - Terminal
