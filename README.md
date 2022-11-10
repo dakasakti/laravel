@@ -2,10 +2,10 @@
 this is a repository when you want to learn laravel from beginner to advanced
 
 ### Requirements
-- PHP >= 8.0 [Link](https://www.php.net)
-- Composer [Link](https://getcomposer.org)
-- NodeJS [Link](https://nodejs.org/en/)
-- Visual Studio Code [Link](https://code.visualstudio.com)
+- PHP >= 8.0 [Check in Here](https://www.php.net)
+- Composer [Check in Here](https://getcomposer.org)
+- NodeJS [Check in Here](https://nodejs.org/en/)
+- Visual Studio Code [Check in Here](https://code.visualstudio.com)
 
 ### Installation
 - Composer
@@ -46,30 +46,30 @@ Debugbar::info("message is info");
 Debugbar::error("message is error");
 ```
 ### HTTP Response in Routing
-[Link](https://laravel.com/docs/9.x/routing)
+[Check in Here](https://laravel.com/docs/9.x/routing)
 
-- Send view
+- [Send view](https://laravel.com/docs/9.x/views)
     ```
     Route::get('/', function () {
         return view('welcome');
     });
     ```
 
-- Send string
+- [Send string](https://laravel.com/docs/9.x/responses#strings-arrays)
     ```
     Route::get('/string', function () {
         return "Hello World";
     });
     ```
 
-- Send array (JSON)
+- [Send array (JSON)](https://laravel.com/docs/9.x/responses#strings-arrays)
     ```
     Route::get('/array', function () {
         return ["PHP", "Laravel"];
     });
     ```
 
-- Send JSON (Object)
+- [Send JSON (Object)](https://laravel.com/docs/9.x/responses#response-objects)
     ```
     Route::get('/json', function () {
         return response()->json([
@@ -78,19 +78,20 @@ Debugbar::error("message is error");
     });
     ```
 
-- Send function
+- [Send function](https://laravel.com/docs/9.x/redirects)
     ```
     Route::get('/function', function () {
         return redirect("/);
     });
     ```
 
-- Send Fallback
+- [Send Fallback](https://laravel.com/docs/9.x/routing#fallback-routes)
     ```
     Route::fallback(FallbackController::class);
     ```
 
 ### Controllers
+[Check in Here](https://laravel.com/docs/9.x/controllers)
 How to make
 - Terminal
     ```
@@ -106,7 +107,7 @@ Controller type
 - Resource (complete)
     
 ### Passing Data to the Views
-- Compact method
+- [Compact method](https://www.php.net/manual/en/function.compact.php)
     ```
     public function index() {
         $title = "This is title";
@@ -115,7 +116,7 @@ Controller type
     }
     ```
 
-- With method
+- [With method](https://laravel.com/docs/9.x/helpers#method-with)
     ```
     public function index2() {
         $data = "Data title";
@@ -124,7 +125,7 @@ Controller type
     }
     ```
 
-- Directly
+- [Directly](https://laravel.com/docs/9.x/views)
     ```
     public function index3() {
         $description = "Data description";
@@ -136,6 +137,7 @@ Controller type
     ```
 
 ### Route Parameters
+[Check in Here](https://laravel.com/docs/9.x/routing#route-parameters)
 ```
 Route::get("/products/{id}", [ProductController::class, "show"]);
 
@@ -147,10 +149,13 @@ public function show($id) {
 ```
 
 Pattern parameter
+[Check in Here](https://laravel.com/docs/9.x/routing#parameters-regular-expression-constraints)
+
 ```
 Route::get("/products/{id}", [ProductController::class, "show"])->where("id", "[0-9]+");
 ```
 ### Named Routes
+[Check in Here](https://laravel.com/docs/9.x/routing#named-routes)
 ```
 Route::get("/products", [ProductController::class, 'index'])->name("products");
 
@@ -158,6 +163,7 @@ Route::get("/products", [ProductController::class, 'index'])->name("products");
 ```
 
 ### Views
+[Check in Here](https://laravel.com/docs/9.x/blade)
 - Layouts
     ```
     @yield('content') => opsional
@@ -178,7 +184,7 @@ Route::get("/products", [ProductController::class, 'index'])->name("products");
     ```
     @include('layouts.header') => required
     ```
-- Images
+- [Images](https://laravel.com/docs/9.x/helpers#method-asset)
     ```
     php artisan storage:link
 
@@ -196,6 +202,7 @@ Route::get("/products", [ProductController::class, 'index'])->name("products");
         return view("portfolio.index")->with("name", "dakasakti");
     }
 
+    // reverse in if
     @unless (empty($name))
         <h2>{{ $name }}</h2>
     @endunless
@@ -252,6 +259,9 @@ Route::get("/products", [ProductController::class, 'index'])->name("products");
 [Check in Here](https://tailwindcss.com/docs/guides/laravel#vite)
 
 ### Databases & Migration
+- Database [Check in Here](https://laravel.com/docs/9.x/database)
+- Migration [Check in Here](https://laravel.com/docs/9.x/migrations)
+
 ```
 php artisan make:controller PostController
 php artisan make:model Post -m
@@ -270,6 +280,8 @@ php artisan migrate
 ```
 
 ### Factory Model
+[Check in Here](https://laravel.com/docs/9.x/eloquent-factories)
+
 ```
 php artisan make:factory PostFactory
 
@@ -286,7 +298,9 @@ public function definition()
     ];
 }
 
-// Database Seeder
+// Seeder
+php artisan make:seeder PostFactory
+
 \App\Models\User::factory(10)->create();
 \App\Models\Post::factory(10)->create();
 
@@ -294,6 +308,8 @@ php artisan db:seed
 ```
 
 ### Query Builder
+[Check in Here](https://laravel.com/docs/9.x/queries)
+
 ```
 use Illuminate\Support\Facades\DB;
 
@@ -321,15 +337,47 @@ $posts = DB::table('posts')->where(["id" => 11])->update([
 $posts = DB::table('posts')->where(["id" => 11])->delete();
 $posts = DB::table('posts')->delete(11);
 ```
+### Eloquent Model Conventions
+[Check in Here](https://laravel.com/docs/9.x/eloquent#eloquent-model-conventions)
+
+```
+\App\Models\{model_name}.php;
+
+// default plural in model_name file
+protected $table = "posts";
+
+// default id
+protected $primaryKey = "slug";
+
+// default true
+protected $timestamps = false;
+
+// multi database
+protected $connection = "sqlite";
+
+// default value
+protected $attributes = [
+    "is_published" => true
+];
+
+// mass assignment
+protected $fillable = ["title"];
+
+// reverse mass assignment
+protected $guarded = ["id"];
+```
 ### Introduction to Eloquent
+[Check in Here](https://laravel.com/docs/9.x/eloquent)
 ```
 use App\Models\Blog;
 
 // get all
 $blogs = Blog::all();
+$blogs = Blog::get();
 
 // get by id
-$blog = Blog::find($id)->first();
+$blog = Blog::find($id);
+$blog = Blog::findOrFail($id);
 
 // insert version_1
 $blog = new Blog;
@@ -368,6 +416,7 @@ public function destroy(Blog $blog)
 }
 ```
 ### Eloquent Serialization
+[Check in Here](https://laravel.com/docs/9.x/eloquent-serialization)
 - toArray
 ```
 $blogs = Blog::all()->toArray();
@@ -378,11 +427,13 @@ $blogs = Blog::all()->toArray();
 $blogs = Blog::all()->toJson();
 ```
 ### Eloquent Relationship
+[Check in Here](https://laravel.com/docs/9.x/eloquent-relationships)
+
 - Eloquent One to Many
 - Eloquent HasMany & HasOne
 - Eloquent Many to Many
 ### Accessing to Request (Validation)
-[Link](https://laravel.com/docs/9.x/validation#error-message-indexes-and-positions)
+[Check in Here](https://laravel.com/docs/9.x/validation)
     
 ```
 public function rules()
@@ -426,7 +477,7 @@ public function rules()
 ```
 
 ### Image Upload
-[Link](https://laravel.com/docs/9.x/filesystem#introduction)
+[Check in Here](https://laravel.com/docs/9.x/filesystem)
 ```
 in form => enctype="multipart/form-data"
 ```
@@ -447,7 +498,19 @@ Method we can use on $request
 // storeAs()
 // storePublicly()
 ```
+
+### Paginate
+[Check in Here](https://laravel.com/docs/9.x/pagination)
+
+```
+// controller 
+call method => paginage(10)
+
+// view
+{{ $posts->links() }}
+```
 ### Basic Artisan Commands
+[Check in Here](https://laravel.com/docs/9.x/artisan)
 ```
 php artisan --version
 php artisan help
@@ -462,7 +525,7 @@ php artisan session:table
 php artisan view:Clear
 ```
 ### Authentication & Authorization
-[Link](https://laravel.com/docs/9.x/authentication)
+[Check in Here](https://laravel.com/docs/9.x/authentication)
 
 ```
 php artisan ui tailwindcss --auth

@@ -24,10 +24,11 @@ class AuthenticationController extends Controller
 
     public function store(StoreRegisterRequest $request)
     {
+        // $request->input("name") === $request->name;
         $user = User::create([
-            "name" => $request->input("name"),
-            "email" => $request->input("email"),
-            "password" => Hash::make($request->input("password")),
+            "name" => $request->name,
+            "email" => $request->email,
+            "password" => Hash::make($request->password),
         ]);
 
         event(new Registered($user));
@@ -43,7 +44,7 @@ class AuthenticationController extends Controller
     {
         $credentials = $request->only('email', 'password');
 
-        if (Auth::attempt($credentials, $request->input('checkbox') === "on" ? true : false)) {
+        if (Auth::attempt($credentials, $request->checkbox === "on")) {
             $request->session()->regenerate();
 
             return redirect()->intended();

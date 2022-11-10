@@ -52,13 +52,11 @@ class BlogController extends Controller
         // $blog->user_id = 1;
         // $blog->save();
 
-        $imagePath = time() . "." . $request->image->extension();
-        $request->image->move(public_path("storage/images"), $imagePath);
-
+        // eloquent model => access fillable or guard in model (assingment)
         Blog::create([
-            "title" => $request->input("title"),
-            "body" => $request->input("body"),
-            "image_path" => $imagePath,
+            "title" => $request->title,
+            "body" => $request->body,
+            "image_path" => $this->storeImage($request->image),
             "user_id" => Auth::id(),
         ]);
 
@@ -106,16 +104,14 @@ class BlogController extends Controller
 
         // new
         if ($request->has('image')) {
-            File::delete(public_path("storage/images/" . $imagePath));
-
-            $imagePath = time() . "." . $request->image->extension();
-            $request->image->move(public_path("storage/images"), $imagePath);
+            $this->deleteImage($imagePath);
+            $imagePath = $this->storeImage($request->image);
         }
 
         $blog->slug = null;
         $blog->update([
-            "title" => $request->input("title"),
-            "body" => $request->input("body"),
+            "title" => $request->title,
+            "body" => $request->body,
             "image_path" => $imagePath,
         ]);
 
@@ -130,8 +126,21 @@ class BlogController extends Controller
      */
     public function destroy(Blog $blog)
     {
-        File::delete(public_path("storage/images/" . $blog->image_path));
+        $this->deleteImage($blog->image_path);
         $blog->delete();
         return to_route('blog.index');
+    }
+
+    private function storeImage($image)
+    {
+        $imagePath = time() . "." . $image->extension();
+        $image->move(public_path("storage/images"), $imagePath);
+
+        return $imagePath;
+    }
+
+    private function deleteImage($path)
+    {
+        File::delete(public_path("storage/images/" . $path));
     }
 }
