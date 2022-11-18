@@ -14,6 +14,7 @@ class AuthenticationController extends Controller
 {
     public function __construct()
     {
+        $this->middleware("preventBackHistory");
         $this->middleware("guest", ["except" => "logout"]);
     }
 
