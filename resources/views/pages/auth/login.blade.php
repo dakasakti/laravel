@@ -41,7 +41,10 @@
                 <small>Or sign in with credentials</small>
               </div>
               @if (Session()->has('message'))
-              <h1 class="text-emerald-500  text-center">{{ session('message') }}</h1>
+                @php
+                    alert()->success('Success', session('message'));
+                @endphp
+                {{-- <h1 class="text-emerald-500  text-center">{{ session('message') }}</h1> --}}
               @endif
               <form action="{{ route("login.auth") }}" method="POST">
                 @csrf

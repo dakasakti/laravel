@@ -41,6 +41,7 @@
     <main>
       @yield('content')
     </main>
+    @include('sweetalert::alert')
   </body>
   <script src="https://unpkg.com/@popperjs/core@2/dist/umd/popper.js"></script>
   <script>
