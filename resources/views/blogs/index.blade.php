@@ -70,5 +70,6 @@
         </table>
       </div>
     </div>
+    {{ $blogs->links() }}
 </div>
 @endsection
