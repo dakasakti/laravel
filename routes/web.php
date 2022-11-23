@@ -97,4 +97,4 @@ Route::prefix('email')->group(function () {
 });
 
 // fallback view
-Route::fallback(FallbackController::class);
+// Route::fallback(FallbackController::class);

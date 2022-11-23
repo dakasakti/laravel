@@ -8,6 +8,7 @@ use App\Http\Requests\UpdateBlogRequest;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Gate;
+use Illuminate\Http\UploadedFile;
 
 class BlogController extends Controller
 {
@@ -83,7 +84,7 @@ class BlogController extends Controller
      */
     public function edit(Blog $blog)
     {
-        if (! Gate::allows('update-blog', $blog)) {
+        if (! Gate::allows('status-users', $blog)) {
             abort(403);
         }
 
@@ -131,7 +132,7 @@ class BlogController extends Controller
         return to_route('blog.index');
     }
 
-    private function storeImage($image)
+    protected function storeImage(UploadedFile $image)
     {
         $imagePath = time() . "." . $image->extension();
         $image->move(public_path("storage/images"), $imagePath);
@@ -139,7 +140,7 @@ class BlogController extends Controller
         return $imagePath;
     }
 
-    private function deleteImage($path)
+    protected function deleteImage(string $path)
     {
         File::delete(public_path("storage/images/" . $path));
     }

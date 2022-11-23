@@ -504,7 +504,7 @@ Method we can use on $request
 
 ```
 // controller 
-call method => paginage(10)
+call method => paginate(10)
 
 // view
 {{ $posts->links() }}
@@ -529,4 +529,85 @@ php artisan view:Clear
 
 ```
 php artisan ui tailwindcss --auth
+```
+
+## REST API
+- REST -> an architectural style used for communication between a server and client.
+- REST -> uses HTTP
+- REST -> data will be send in either XML or JSON
+
+```
+Disadvantages REST
+
+- REST is not stateful
+- you can't push data through REST
+- you always need to send some kind of context the server
+```
+
+### HTTP Method & Service Responses
+```
+CRUD    REQUEST     HTTP VERB   ENDPOINT
+Read    GET         GET         /blogs
+                                /blogs/{inception}
+Create  GET         GET         /blogs/create
+Update  UPDATE      PUT/PATCH   /blogs/{inception}
+Delete  DELETE      DELETE      /blogs/{inception}
+```
+
+```
+Recomendation => consistency is key
+- use plural verb
+```
+
+[Check in Here](https://developer.mozilla.org/en-US/docs/Web/HTTP/Status)
+```
+Status Codes
+- 2xx => tells the client a request was successful
+- 3xx => tells the client about redirections
+- 4xx => tells the client that there has been an error
+- 5xx => statuses that deal with the server
+```
+
+### JSON API Best Practices
+[Example](https://gorest.co.in/public/v2/users)
+```
+- API Spesification
+- attribute writing using snake_case
+```
+
+### Laravel Passport
+[Check in Here](https://laravel.com/docs/9.x/passport)
+
+- Laravel Sanctum => does not support OAuth2
+
+You have to set `Accept:application/json` header in your API request from client-side and Laravel will automatically return a JSON format error.
+### Access Tokens
+```
+php artisan passport:install
+
+How to Make access token ([POST] => {uri}/oauth/token)
+grant_type=password
+client_id=2
+client_secret=randomString
+username=username@domain.tld
+password=defaultusers
+scope=
+```
+### Building Resources
+```
+php artisan make:resource BlogResource
+
+public function toArray($request)
+{
+    return [
+        "id" => $this->id,
+        "author" => $this->user->name,
+        "title" => $this->title,
+        "slug" => $this->slug,
+        "image_path" => asset("/storage/images/$this->image_path"),
+        "body" => $this->body,
+        "created_at" => $this->created_at,
+        "updated_at" => $this->updated_at
+    ];
+}
 ```
