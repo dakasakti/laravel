@@ -34,6 +34,65 @@ this is a repository when you want to learn laravel from beginner to advanced
 - [Database Client](https://marketplace.visualstudio.com/items?itemName=cweijan.vscode-database-client2) => Weijan Chen
 - [Community Material Theme](https://marketplace.visualstudio.com/items?itemName=Equinusocio.vsc-community-material-theme) => Equinusocio
 
+### Configuration or Environment
+[Check in Here](https://laravel.com/docs/9.x/configuration)
+```
+// get data
+config("app.name", "Laravel")
+
+// use Illuminate\Support\Env;
+env('APP_NAME', "defaultValue"); => Env::get('APP_NAME', "defaultValue");
+
+// use cache to load data (production)
+php artisan config:cache
+
+// remove cache
+php artisan config:clear
+```
+### Service Provider (Depedency Injection)
+[Check in Here](https://laravel.com/docs/9.x/providers)
+```
+php artisan make:provider NameServiceProvider
+
+public function register()
+{
+    $this->app->singleton(Foo::class, function ($app) {
+        return new Foo();
+    });
+
+    $this->app->singleton(Bar::class, function ($app) {
+         return new Bar($app->make(Foo::class));
+    });
+}
+
+// use Illuminate\Contracts\Support\DeferrableProvider;
+// use Lazy loading (implements DeferrableProvider)
+public function provides(): array
+{
+    return [HelloService::class, Foo::class, Bar::class];
+}
+
+// remove compiled cache services
+php artisan clear-compiled
+
+// registration service provider
+// add in config->app.php => providers
+App\Providers\NameServiceProvider::class,
+```
+
+### Facades
+[Check in Here](https://laravel.com/docs/9.x/facades)
+```
+use facades if required
+
+// in dependency (container)
+$config = $this->app->make('config');
+$config->get('example.author');
+
+// in facade
+Config::get('example.author');
+```
+
 ### Laravel Debugbar
 ```
 composer require barryvdh/laravel-debugbar --dev
@@ -523,12 +582,30 @@ php artisan auth:clear-resets
 php artisan key:generate
 php artisan session:table
 php artisan view:Clear
+php artisan serve
 ```
 ### Authentication & Authorization
 [Check in Here](https://laravel.com/docs/9.x/authentication)
 
 ```
 php artisan ui tailwindcss --auth
+```
+
+### Testing
+[Check in Here](https://laravel.com/docs/9.x/testing)
+```
+php artisan make:test ContohIntegationTest
+php artisan make:test ContohUnitTest --unit
+
+public function test_routing_string()
+{
+    $response = $this->get('/string');
+
+    $response->assertStatus(200);
+    $response->assertSeeText("Hello World");
+}
+
+php artisan test
 ```
 
 ## REST API
