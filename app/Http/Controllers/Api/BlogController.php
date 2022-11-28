@@ -76,6 +76,12 @@ class BlogController extends ControllersBlogController
             $imagePath = $this->storeImage($request->image);
         }
 
+        // filter merge if missing
+        // $request->mergeIfMissing([
+        //     "title" => $blog->title,
+        //     "body" => $blog->body,
+        // ]);
+
         $blog->slug = null;
         $blog->update([
             "title" => $request->title ?? $blog->title,

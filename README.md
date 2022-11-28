@@ -49,7 +49,7 @@ php artisan config:cache
 // remove cache
 php artisan config:clear
 ```
-### Service Provider (Depedency Injection)
+### Service Provider (Dependency Injection)
 [Check in Here](https://laravel.com/docs/9.x/providers)
 ```
 php artisan make:provider NameServiceProvider
@@ -93,16 +93,21 @@ $config->get('example.author');
 Config::get('example.author');
 ```
 
-### Laravel Debugbar
+### Laravel Debugbar & IdeHelper
 ```
 composer require barryvdh/laravel-debugbar --dev
+composer require barryvdh/laravel-ide-helper --dev
 
 // add in config->app.php => providers
 Barryvdh\Debugbar\ServiceProvider::class,
 
 // use
 Debugbar::info("message is info");
-Debugbar::error("message is error");
+Debugbar::error("message is error"); 
+
+// helper
+php artisan ide-helper:generate
+php artisan ide-helper:models
 ```
 ### HTTP Response in Routing
 [Check in Here](https://laravel.com/docs/9.x/routing)
@@ -148,6 +153,14 @@ Debugbar::error("message is error");
     ```
     Route::fallback(FallbackController::class);
     ```
+
+```
+// use cache view
+php artisan view:cache
+
+// remove cache view
+php artisan view:clear
+```
 
 ### Controllers
 [Check in Here](https://laravel.com/docs/9.x/controllers)
